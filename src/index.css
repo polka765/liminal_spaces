@@ -1,0 +1,960 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Sber15";
+  src: url("public/fonts/sber15.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono:Bold";
+  src: url("https://static.figma.com/font/IBMPlexMono-Bold_3") format("woff2");
+  font-style: normal;
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono:Regular";
+  src: url("https://static.figma.com/font/IBMPlexMono-Regular_2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Rubik Glitch:Regular";
+  src: url("https://static.figma.com/font/RubikGlitch-Regular_1") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+}
+
+/*
+  Sber 15 Regular was unavailable in this Make file. When the original file is
+  supplied, place it at public/fonts/Sber15-Regular.woff2 and enable:
+
+  @font-face {
+    font-family: "Sber 15:Regular";
+    src: url("../fonts/Sber15-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+  }
+*/
+
+:root {
+  color: #e9dcb8;
+  background: #100d09;
+  font-family: "IBM Plex Mono:Regular", monospace;
+  font-synthesis: none;
+}
+
+@layer base {
+  html {
+    background: #100d09;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-width: 320px;
+    background: #100d09;
+    overflow-x: hidden;
+  }
+
+  button,
+  a {
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+main {
+  width: 100%;
+  overflow: hidden;
+  background: #100d09;
+}
+
+.hotel-section {
+  --copy-left: max(5.55vw, 40px);
+  position: relative;
+  isolation: isolate;
+  min-height: 960px;
+  overflow: hidden;
+  background: #100d09;
+}
+
+.checkin {
+  min-height: 1000px;
+}
+
+.backrooms {
+  min-height: 920px;
+}
+
+.tour {
+  min-height: 1160px;
+}
+
+.section-bg,
+.shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.section-bg {
+  z-index: -3;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.shade {
+  z-index: -2;
+  transition:
+    opacity 1s ease-out,
+    transform 1.8s ease-out;
+}
+
+.shade-left {
+  right: auto;
+  width: 58%;
+  background: rgba(16, 13, 9, 0.48);
+}
+
+.shade-right {
+  left: auto;
+  width: 58%;
+  background: rgba(16, 13, 9, 0.48);
+}
+
+.shade-full {
+  background: rgba(16, 13, 9, 0.55);
+}
+
+.section-copy {
+  position: absolute;
+  z-index: 2;
+  top: 27.5%;
+  left: var(--copy-left);
+  width: min(48vw, 700px);
+}
+
+.section-copy h1,
+.section-copy h2 {
+  margin: 0;
+  font-family: "sber15", sans-serif;
+  font-size: clamp(54px, 5.28vw, 76px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+}
+
+.section-copy p {
+  margin: 112px 0 0;
+  max-width: 700px;
+  font-size: 21px;
+  line-height: normal;
+}
+
+.section-copy em {
+  font-family: "Sber 15:Regular", sans-serif;
+  font-style: normal;
+}
+
+.align-right .section-copy {
+  right: max(5.55vw, 40px);
+  left: auto;
+  text-align: right;
+}
+
+.action {
+  display: inline-flex;
+  min-height: 72px;
+  margin-top: 112px;
+  padding: 0 25px;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-top: 2px solid #d4b66f;
+  color: #d4b66f;
+  background: rgba(212, 182, 111, 0.15);
+  font-family: "IBM Plex Mono:Bold", monospace;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.action:hover,
+.action:focus-visible {
+  color: #100d09;
+  background: #d4b66f;
+  outline: none;
+}
+
+.mobile-label {
+  display: none;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 700ms ease-out,
+    transform 700ms ease-out;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.checkin-copy {
+  top: 15%;
+}
+
+.eyebrow {
+  margin: 0 0 25px !important;
+  font-family: "Sber 15:Regular", sans-serif;
+  font-size: 28px !important;
+  letter-spacing: 0.3em;
+}
+
+.section-copy .glitch-title {
+  position: relative;
+  color: #e9dcb8;
+  font-family: "Rubik Glitch:Regular", sans-serif;
+  font-size: clamp(64px, 6.11vw, 88px);
+  letter-spacing: 0;
+}
+
+.glitch-title::before,
+.glitch-title::after {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  white-space: pre-line;
+  content: "ЗЛОВЕЩАЯ\A ДОЛИНА";
+}
+
+.glitch-title::before {
+  color: #ff0004;
+  transform: translate(2px, 2px);
+}
+
+.glitch-title::after {
+  color: #00c3ff;
+  transform: translate(-2px, 1px);
+}
+
+.checkin-copy > p:not(.eyebrow) {
+  margin-top: 92px;
+  max-width: 670px;
+}
+
+.checkin-copy .action {
+  margin-top: 90px;
+}
+
+.guide-state {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(28px);
+  transition:
+    opacity 850ms ease-out,
+    transform 850ms ease-out,
+    visibility 0s linear 850ms;
+}
+
+.checked-in .guide-state {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.checked-in .checkin-copy {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+.guide-card {
+  position: absolute;
+  top: 33.3%;
+  left: 45.5%;
+  width: min(45vw, 647px);
+  min-height: 333px;
+  padding: 53px;
+  border-radius: 60px;
+  background: #100d09;
+}
+
+.guide-card strong {
+  color: #d4b66f;
+  font-family: "IBM Plex Mono:Bold", monospace;
+  font-size: 35px;
+}
+
+.guide-card p {
+  margin-top: 58px;
+  font-size: 28px;
+  line-height: normal;
+}
+
+.guide-figure {
+  position: absolute;
+  bottom: -25px;
+  left: 17%;
+  width: 355px;
+  height: 800px;
+}
+
+.guide-glow,
+.guide-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.guide-glow {
+  inset: -7% -16%;
+  width: 132%;
+  height: 114%;
+
+  opacity: 0.65;
+  filter: blur(35px);
+
+  -webkit-mask-image: radial-gradient(
+          ellipse at center,
+          black 30%,
+          transparent 75%
+  );
+
+  mask-image: radial-gradient(
+          ellipse at center,
+          black 30%,
+          transparent 75%
+  );
+
+  pointer-events: none;
+}
+
+.guide-photo {
+  object-position: 50% center;
+}
+
+.corridor-bg {
+  transition: transform 2.2s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: 50% 50%;
+}
+
+.is-explored .corridor-bg {
+  transform: scale(1.28);
+}
+
+.is-explored .corridor-shade {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.corridor-copy {
+  transition:
+    opacity 1s ease,
+    transform 1.8s ease-out;
+}
+
+.is-explored .corridor-copy {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-110%);
+}
+
+.room .shade-full {
+  background: rgba(16, 13, 9, 0.25);
+}
+
+.pool .section-copy {
+  top: 13.7%;
+}
+
+.pool .section-copy p {
+  margin-top: 122px;
+}
+
+.pool .action {
+  margin-top: 115px;
+}
+
+.pool-dark-layer {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.pool-dark-layer::after {
+  position: absolute;
+  inset: 0;
+  content: "";
+  background: rgba(16, 13, 9, 0.83);
+}
+
+.pool-base-shade {
+  transition: opacity 1.2s ease;
+}
+
+.lights-out .pool-dark-layer {
+  opacity: 1;
+}
+
+.lights-out .pool-base-shade {
+  opacity: 0;
+}
+
+.glitch-heading {
+  font-family: "Rubik Glitch:Regular", sans-serif !important;
+  font-size: 88px !important;
+  letter-spacing: 0 !important;
+}
+
+.backrooms-copy {
+  top: 19.5%;
+}
+
+.backrooms-copy p {
+  margin-top: 92px;
+}
+
+.backrooms-copy .action {
+  margin-top: 78px;
+}
+
+.gallery {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  background: #100d09;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 650ms ease,
+    visibility 0s linear 650ms;
+}
+
+.gallery-open .gallery {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transform: scale(1.03);
+  transition:
+    opacity 550ms ease,
+    transform 700ms ease;
+}
+
+.gallery-open .gallery img {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.gallery-open .gallery img:nth-child(2n) {
+  transition-delay: 90ms;
+}
+
+.gallery-open .gallery img:nth-child(3n) {
+  transition-delay: 180ms;
+}
+
+.gallery-close {
+  position: absolute;
+  bottom: 80px;
+  left: 80px;
+  z-index: 2;
+  margin: 0;
+}
+
+.photo .section-bg {
+  transform: scale(1.14) rotate(3.2deg);
+}
+
+.internet .section-bg {
+  transform: scale(1.15);
+}
+
+.tour-copy {
+  top: 7%;
+}
+
+.tour-copy p {
+  margin-top: 185px;
+  max-width: 750px;
+  font-size: 36px;
+}
+
+.tour-copy .action {
+  min-height: 130px;
+  margin-top: 245px;
+  padding: 0 45px;
+  border-top-width: 4px;
+  font-size: 25px;
+}
+
+.video-state {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  padding: 70px 5.55vw;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition:
+    opacity 800ms ease,
+    transform 800ms ease,
+    visibility 0s linear 800ms;
+}
+
+.tour-started .tour-copy {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+}
+
+.tour-started .video-state {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition-delay: 0s;
+}
+
+.video-state h2 {
+  margin: 0;
+  font-family: "Sber 15:Regular", sans-serif;
+  font-size: 76px;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.video-frame {
+  display: grid;
+  width: 100%;
+  height: 60%;
+  margin-top: 55px;
+  place-items: center;
+  background: rgba(16, 13, 9, 0.82);
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.video-frame p {
+  max-width: 620px;
+  padding: 30px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.exit {
+  min-height: 960px;
+}
+
+.exit-shade {
+  background: rgba(16, 13, 9, 0.7);
+}
+
+.exit .section-copy {
+  top: 33%;
+}
+
+.exit .exit-text {
+  margin: 0;
+  font-size: 25px;
+}
+
+.is-disabled {
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
+@media (max-width: 767px) {
+  .hotel-section {
+    --copy-left: 20px;
+    min-height: 870px;
+  }
+
+  .checkin {
+    min-height: 950px;
+  }
+
+  .familiar,
+  .pool {
+    min-height: 900px;
+  }
+
+  .backrooms {
+    min-height: 960px;
+  }
+
+  .photo {
+    min-height: 990px;
+  }
+
+  .internet {
+    min-height: 1000px;
+  }
+
+  .tour {
+    min-height: 890px;
+  }
+
+  .exit {
+    min-height: 850px;
+  }
+
+  .section-bg {
+    object-position: center;
+  }
+
+  .shade-left,
+  .shade-right {
+    top: 330px;
+    width: 100%;
+    height: calc(100% - 330px);
+    background: rgba(16, 13, 9, 0.84);
+  }
+
+  .hotel-section::after {
+    position: absolute;
+    inset: 0 0 auto;
+    z-index: -2;
+    height: 340px;
+    content: "";
+    background: rgba(16, 13, 9, 0.62);
+  }
+
+  .shade-full {
+    background: rgba(16, 13, 9, 0.2);
+  }
+
+  .section-copy,
+  .align-right .section-copy {
+    top: 166px;
+    right: 20px;
+    left: 20px;
+    width: auto;
+    text-align: left;
+  }
+
+  .section-copy h1,
+  .section-copy h2,
+  .video-state h2 {
+    font-size: 40px;
+    line-height: normal;
+    letter-spacing: 0;
+  }
+
+  .section-copy p {
+    margin-top: 125px;
+    max-width: none;
+    font-size: 15px;
+    line-height: normal;
+  }
+
+  .action {
+    position: absolute;
+    top: 562px;
+    right: 0;
+    left: 0;
+    width: 100%;
+    min-height: 64px;
+    margin: 0;
+    justify-content: flex-start;
+    padding: 0 16px;
+    font-size: 13px;
+  }
+
+  .desktop-label {
+    display: none;
+  }
+
+  .mobile-label {
+    display: inline;
+  }
+
+  .checkin-copy {
+    top: 165px;
+  }
+
+  .eyebrow {
+    display: none;
+  }
+
+  .section-copy .glitch-title {
+    font-size: 40px;
+  }
+
+  .checkin-copy > p:not(.eyebrow) {
+    margin-top: 96px;
+    font-size: 14px;
+  }
+
+  .checkin-copy .action {
+    top: clamp(470px, 70svh, 560px);
+  }
+
+  .guide-card {
+    top: 72px;
+    left: 25px;
+    width: calc(100% - 50px);
+    min-height: 170px;
+    padding: 30px 33px;
+    border-radius: 60px;
+  }
+
+  .guide-card strong {
+    font-size: 16px;
+  }
+
+  .guide-card p {
+    margin-top: 31px;
+    font-size: 14px;
+  }
+
+  .guide-figure {
+    bottom: -20px;
+    left: 16%;
+    width: 68%;
+    height: 71%;
+  }
+
+  .corridor .section-bg {
+    object-position: 48% center;
+  }
+
+  .is-explored .corridor-bg {
+    transform: scale(1.44);
+  }
+
+  .room .section-copy p {
+    margin-top: 122px;
+  }
+
+  .pool .section-copy {
+    top: 166px;
+  }
+
+  .pool .section-copy p {
+    margin-top: 118px;
+  }
+
+  .pool .action {
+    top: 592px;
+    margin: 0;
+  }
+
+  .lights-out .section-copy p {
+    margin-top: 125px;
+    padding: 32px 16px;
+    background: rgba(16, 13, 9, 0.82);
+  }
+
+  .glitch-heading {
+    font-size: 40px !important;
+  }
+
+  .backrooms .section-bg {
+    object-position: 35% center;
+    transform: scale(1.15);
+  }
+
+  .backrooms-copy {
+    top: 166px;
+  }
+
+  .backrooms-copy p {
+    margin-top: 122px;
+  }
+
+  .backrooms-copy .action {
+    top: 652px;
+    margin: 0;
+  }
+
+  .gallery {
+    grid-template-columns: 46% 54%;
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .gallery img:nth-child(n + 7) {
+    display: none;
+  }
+
+  .gallery-close {
+    top: auto;
+    bottom: 78px;
+    left: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .photo .section-bg {
+    transform: none;
+    object-position: 47% center;
+  }
+
+  .photo .section-copy p {
+    margin-top: 125px;
+    font-size: 14px;
+  }
+
+  .internet .section-bg {
+    transform: scale(1.15);
+    object-position: center;
+  }
+
+  .internet .section-copy p {
+    margin-top: 116px;
+    font-size: 14px;
+  }
+
+  .tour-copy {
+    top: 166px;
+  }
+
+  .tour-copy p {
+    margin-top: 125px;
+    font-size: 15px;
+  }
+
+  .tour-copy .action {
+    top: 582px;
+    min-height: 64px;
+    margin: 0;
+    padding: 0 16px;
+    border-top-width: 2px;
+    font-size: 13px;
+  }
+
+  .video-state {
+    padding: 166px 10px 0;
+  }
+
+  .video-frame {
+    height: 197px;
+    margin-top: 122px;
+  }
+
+  .video-frame p {
+    padding: 20px;
+    font-size: 13px;
+  }
+
+  .exit .section-copy {
+    top: 354px;
+  }
+
+  .exit .exit-text {
+    font-size: 15px;
+  }
+
+  .exit .action {
+    top: 354px;
+  }
+}
+
+
+.exit .back-to-top {
+  top: 440px;
+  cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .exit .back-to-top {
+    top: 435px;
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1050px) {
+  .hotel-section {
+    min-height: 900px;
+  }
+
+  .section-copy {
+    width: 55vw;
+  }
+
+  .section-copy p {
+    font-size: 18px;
+  }
+
+  .guide-card {
+    left: 44%;
+    width: 52%;
+  }
+
+  .guide-card strong {
+    font-size: 24px;
+  }
+
+  .guide-card p {
+    font-size: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+@media (max-width: 767px) {
+
+  .corridor.hotel-section::after,
+  .exit.hotel-section::after {
+    display: none;
+  }
+
+  .corridor .corridor-shade {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 13, 9, 0.55);
+  }
+
+  .exit .exit-shade {
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(16, 13, 9, 0.55);
+  }
+}
